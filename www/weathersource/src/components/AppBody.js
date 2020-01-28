@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom'
 import Current from './Current'
+import Charts from './Charts'
 import Hourly from './Hourly';
 import Daily from './Daily';
 import NotFound from './NotFound';
@@ -26,6 +27,9 @@ class AppBody extends Component {
                     </Route>
                     <Route path="/current">
                         <Current />
+                    </Route>
+                    <Route path="/charts">
+                        <Charts />
                     </Route>
                     <Route exact path="/">
                         <Current />
