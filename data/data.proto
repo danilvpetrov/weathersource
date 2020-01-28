@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option go_package = "github.com/danilvpetrov/weathersource/data";
+
+package weathersource.data;
+
+enum DataType {
+    UNKNOWN = 0;
+    CURRENT = 1;
+    MINUTELY = 2;
+    HOURLY = 3;
+    DAILY = 4;
+}
+
+// Data is the collection of weather information received from
+// https://api.darksky.net.
+message Data {
+    DataType type = 1;
+    double latitude = 2;
+	double longitude = 3;
+    string timezone = 4;
+    double apparent_temperature_high = 5;
+    int64 apparent_temperature_high_time = 6;
+    double apparent_temperature_low = 7;
+    int64 apparent_temperature_low_time = 8;
+    double apparent_temperature_max = 9;
+    int64 apparent_temperature_max_time = 10;
+    double apparent_temperature_min = 11;
+    int64 apparent_temperature_min_time =12;
+    double temperature =13;
+    double apparent_temperature = 14;
+    double cloud_cover = 15;
+    double dew_point = 16;
+    double humidity = 17;
+    string icon = 18;
+    double moon_phase = 19;
+    double ozone = 20;
+    double precip_intensity = 21;
+    double precip_intensity_max = 22;
+    int64 precip_intensity_max_time = 23;
+    double precip_probability = 24;
+    string precip_type = 25;
+    double pressure = 26;
+    string summary = 27;
+    int64 sunrise_time = 28;
+    int64 sunset_time = 29;
+    double temperature_high = 30;
+    int64 temperature_high_time = 31;
+    double temperature_low = 32;
+    int64 temperature_low_time = 33;
+    double temperature_max = 34;
+    int64 temperature_max_time = 35;
+    double temperature_min = 36;
+    int64 temperature_min_time = 37;
+    int64 time = 38;
+    int64 uv_index = 39;
+    int64 uv_index_time = 40;
+    double visibility = 41;
+    int64 wind_bearing = 42;
+    double wind_gust = 43;
+    int64 wind_gust_time = 44;
+    double wind_speed = 45;
+}

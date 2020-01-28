@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package weathersource.api.forecast;
+option go_package = "github.com/danilvpetrov/weathersource/api/forecast";
+
+import "data/data.proto";
+
+// Forecast is the container for the latest weather forecast data.
+message Forecast {
+    weathersource.data.Data current  = 1;
+    repeated weathersource.data.Data minutely = 2;
+    repeated weathersource.data.Data hourly = 3;
+    repeated weathersource.data.Data daily = 4;
+}

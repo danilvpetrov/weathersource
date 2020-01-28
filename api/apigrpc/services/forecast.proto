@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package weathersource.api.grpc.services.forecast;
+
+option go_package = "github.com/danilvpetrov/weathersource/api/apigrpc/services";
+
+import "api/forecast/forecast.proto";
+
+// Forecast is a service to provide weather forecast information stored in the
+// cache.
+service Forecast {
+    // Get retrieves the latest weather forecast from the forecast service API.
+    rpc Get(ForecastRequest) returns (ForecastResponse);
+}
+
+// ForecastRequest is the request to query the latest weather forecast data.
+message ForecastRequest {}
+
+// ForecastResponse is the response with the latest weather forecast data.
+message ForecastResponse {
+    weathersource.api.forecast.Forecast forecast = 1;
+}
