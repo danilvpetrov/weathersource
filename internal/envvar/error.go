@@ -49,3 +49,20 @@ func validateName(n string) {
 		panic("environment variable name must not be empty")
 	}
 }
+
+// ValueParsingError is an error that occurs when a value of an environment
+// variable cannot be parsed into the target type.
+type ValueParsingError struct {
+	Name       string
+	Value      string
+	TargetType string
+}
+
+func (e *ValueParsingError) Error() string {
+	return fmt.Sprintf(
+		"'%s' with value '%s' cannot be parsed as '%s'",
+		e.Name,
+		e.Value,
+		e.TargetType,
+	)
+}
