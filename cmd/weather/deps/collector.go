@@ -1,7 +1,6 @@
 package deps
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -17,18 +16,12 @@ func ProvideCollector(
 	persister storage.Persister,
 	logger *log.Logger,
 ) (*collection.Collector, error) {
-	d, err := time.ParseDuration(
-		envvar.StringDefault(
-			"WEATHER_UPDATE_INTERVAL",
-			"5m",
-		),
+	d, err := envvar.DurationDefault(
+		"WEATHER_UPDATE_INTERVAL",
+		5*time.Minute,
 	)
 	if err != nil {
-		return nil,
-			fmt.Errorf(
-				"cannot parse WEATHER_UPDATE_INTERVAL as time.Duration: %w",
-				err,
-			)
+		return nil, err
 	}
 
 	bexp := backoff.NewExponentialBackOff()
