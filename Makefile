@@ -1,12 +1,15 @@
 GOOS := $(shell go env GOOS)
 GOARCH := $(shell go env GOARCH)
 
+DOCKER_REPO:=beschmutzen/weathersource
+
 # Generated Wire DI file
 GENERATED_FILES += cmd/weather/deps/deps_wire_gen.go
 
 -include .makefiles/Makefile
 -include .makefiles/pkg/go/v1/Makefile
 -include .makefiles/pkg/protobuf/v1/Makefile
+-include .makefiles/pkg/docker/v1/Makefile
 
 artifacts/bin/wire:
 	@mkdir -p "$(@D)"
