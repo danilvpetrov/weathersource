@@ -6,7 +6,7 @@ import { Navbar } from 'react-bulma-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faSync, faCloudSun, faClock,
-    faHourglass, faCalendarDay
+    faHourglass, faCalendarDay, faChartArea
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -59,6 +59,10 @@ class AppNavbar extends Component {
                         <NavLink className="navbar-item" to="/daily" activeStyle={{ backgroundColor: '#118fe4', color: '#fff' }}>
                             <span style={{ fontSize: 18, marginRight: 5 }}><FontAwesomeIcon icon={faCalendarDay} /></span>
                             Daily forecast
+                        </NavLink>
+                        <NavLink className="navbar-item" to="/charts" activeStyle={{ backgroundColor: '#118fe4', color: '#fff' }}>
+                            <span style={{ fontSize: 18, marginRight: 5 }}><FontAwesomeIcon icon={faChartArea} /></span>
+                            Charts
                         </NavLink>
                     </Navbar.Container>
                     <Navbar.Container position="end">
