@@ -1,19 +1,12 @@
 GOOS := $(shell go env GOOS)
 GOARCH := $(shell go env GOARCH)
 
-# PROTO_FILES files is a space separated list of Protocol Buffers files that
-# need to be built into Go files.
-PROTO_FILES += $(shell find . -type f -name "*.proto")
-
 # Generated Wire DI file
 GENERATED_FILES += cmd/weather/deps/deps_wire_gen.go
 
 -include .makefiles/Makefile
 -include .makefiles/pkg/go/v1/Makefile
-
-artifacts/bin/protoc-gen-go:
-	@mkdir -p "$(@D)"
-	GOBIN="$(shell pwd)/$(@D)" go install github.com/golang/protobuf/protoc-gen-go
+-include .makefiles/pkg/protobuf/v1/Makefile
 
 artifacts/bin/wire:
 	@mkdir -p "$(@D)"
@@ -23,13 +16,9 @@ artifacts/bin/go-bindata:
 	@mkdir -p "$(@D)"
 	GOBIN="$(shell pwd)/$(@D)" go install github.com/go-bindata/go-bindata/go-bindata
 
-%.pb.go: %.proto | artifacts/bin/protoc-gen-go
-	PATH="$(shell pwd)/artifacts/bin:$$PATH" protoc \
-	--go_out=paths=source_relative,plugins=grpc:. \
-	$(@D)/*.proto
 
 DEPS := $(shell find cmd/weather/deps -type f \! -name "*_gen.go")
-cmd/weather/deps/deps_wire_gen.go: $(DEPS)| artifacts/bin/wire
+cmd/weather/deps/deps_wire_gen.go: $(DEPS) $(PROTO_FILES:.proto=.pb.go)| artifacts/bin/wire
 	artifacts/bin/wire gen --output_file_prefix=deps_ "$(shell pwd)/$(@D)"
 
 WWW_SRC_FILES := $(shell find www/weathersource/src -type f -name "*")
