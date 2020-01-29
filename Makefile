@@ -7,7 +7,6 @@ PROTO_FILES += $(shell find . -type f -name "*.proto")
 
 # Generated Wire DI file
 GENERATED_FILES += cmd/weather/deps/deps_wire_gen.go
-GENERATED_FILES += assets/assets.go
 
 -include .makefiles/Makefile
 -include .makefiles/pkg/go/v1/Makefile
@@ -38,14 +37,21 @@ WWW_SRC_FILES += $(shell find www/weathersource/public -type f -name "*")
 www/weathersource/build/index.html: $(WWW_SRC_FILES)
 	npm --prefix $(shell pwd)/www/weathersource run-script build $(shell pwd)/www/weathersource
 
-assets/assets.go: www/weathersource/build/index.html | artifacts/bin/go-bindata
-	artifacts/bin/go-bindata -o "$@" -pkg $(notdir $(@D)) \
+ASSETS_FILE := assets/assets.go
+ASSETS_FILE_DIR = $(dir $(ASSETS_FILE))
+.PHONY: assets
+assets: www/weathersource/build/index.html | artifacts/bin/go-bindata
+	artifacts/bin/go-bindata -o "$(ASSETS_FILE)" -pkg $(ASSETS_FILE_DIR:/=) \
 		-prefix $(dir $<) \
 		-modtime 1257894000000000000 \
 		-mode 400 \
 		-fs \
 		"$(dir $<)..."
-	gofmt -s -w "$@"
+	gofmt -s -w "$(ASSETS_FILE)"
+
+.PHONY: npm-start
+npm-start:
+	npm --prefix www/weathersource start
 
 .PHONY: stack
 stack:
