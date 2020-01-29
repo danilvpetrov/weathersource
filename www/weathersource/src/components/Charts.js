@@ -45,6 +45,10 @@ function ChartsStructure(data) {
                     xaxis: {
                         type: 'datetime',
                     },
+                    yaxis: {
+                        opposite: true,
+                        decimalsInFloat: 0
+                    },
                     colors: [
                         '#66DA26'
                     ]
@@ -67,6 +71,11 @@ function ChartsStructure(data) {
                     xaxis: {
                         type: 'datetime',
                     },
+                    yaxis: {
+                        opposite: true,
+                        decimalsInFloat: 0,
+                        max: 100
+                    },
                     colors: [
                         '#ffdd56'
                     ]
@@ -88,6 +97,10 @@ function ChartsStructure(data) {
                     labels: daily.time,
                     xaxis: {
                         type: 'datetime',
+                    },
+                    yaxis: {
+                        opposite: true,
+                        decimalsInFloat: 3,
                     },
                     colors: [
                         '#3298dc'
@@ -114,6 +127,10 @@ function ChartsStructure(data) {
                     xaxis: {
                         type: 'datetime',
                     },
+                    yaxis: {
+                        opposite: true,
+                        decimalsInFloat: 0
+                    },
                     colors: [
                         '#66DA26'
                     ]
@@ -136,6 +153,11 @@ function ChartsStructure(data) {
                     xaxis: {
                         type: 'datetime',
                     },
+                    yaxis: {
+                        opposite: true,
+                        decimalsInFloat: 0,
+                        max: 100
+                    },
                     colors: [
                         '#ffdd56'
                     ]
@@ -157,6 +179,10 @@ function ChartsStructure(data) {
                     labels: hourly.time,
                     xaxis: {
                         type: 'datetime',
+                    },
+                    yaxis: {
+                        opposite: true,
+                        decimalsInFloat: 3,
                     },
                     colors: [
                         '#3298dc'
