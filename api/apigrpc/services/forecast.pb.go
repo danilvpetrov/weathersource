@@ -126,11 +126,11 @@ var fileDescriptor_be56d2eab663686e = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ForecastClient is the client API for Forecast service.
 //
@@ -141,10 +141,10 @@ type ForecastClient interface {
 }
 
 type forecastClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewForecastClient(cc *grpc.ClientConn) ForecastClient {
+func NewForecastClient(cc grpc.ClientConnInterface) ForecastClient {
 	return &forecastClient{cc}
 }
 
