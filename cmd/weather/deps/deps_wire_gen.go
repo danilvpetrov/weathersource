@@ -6,11 +6,8 @@
 package deps
 
 import (
+	"github.com/danilvpetrov/weathersource/internal/deps"
 	"github.com/danilvpetrov/weathersource/internal/run"
-)
-
-import (
-	_ "github.com/go-sql-driver/mysql"
 )
 
 // Injectors from deps.go:
@@ -20,12 +17,12 @@ func Deps() ([]run.Service, func(), error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	db, cleanup, err := ProvideDatabase()
+	db, cleanup, err := deps.ProvideDatabase()
 	if err != nil {
 		return nil, nil, err
 	}
 	storage := ProvideStorage(db)
-	logger := ProvideLogger()
+	logger := deps.ProvideLogger()
 	collector, err := ProvideCollector(client, storage, logger)
 	if err != nil {
 		cleanup()

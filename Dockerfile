@@ -5,5 +5,6 @@ FROM scratch
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 COPY artifacts/build/release/linux/amd64/weather /app/bin/
+COPY artifacts/build/release/linux/amd64/inflateschema /app/bin/
 
 ENTRYPOINT ["/app/bin/weather"]
