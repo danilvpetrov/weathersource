@@ -5,6 +5,7 @@ DOCKER_REPO:=beschmutzen/weathersource
 
 # Generated Wire DI file
 GENERATED_FILES += cmd/weather/deps/deps_wire_gen.go
+GENERATED_FILES += storage/mysqlstorage/schema.go
 
 -include .makefiles/Makefile
 -include .makefiles/pkg/go/v1/Makefile
@@ -23,6 +24,15 @@ artifacts/bin/go-bindata:
 DEPS := $(shell find . -path "*/deps/*.go" \! -name "*_gen.go" -type f)
 cmd/weather/deps/deps_wire_gen.go: $(DEPS) $(PROTO_FILES:.proto=.pb.go) | artifacts/bin/wire
 	artifacts/bin/wire gen --output_file_prefix=deps_ "$(shell pwd)/$(@D)"
+
+
+storage/mysqlstorage/schema.go: storage/mysqlstorage/schema.sql | artifacts/bin/go-bindata
+	artifacts/bin/go-bindata -o "$@" -pkg $(notdir $(@D)) \
+		-prefix $(dir $<) \
+		-modtime 1257894000000000000 \
+		-mode 400 \
+		"$<"
+	gofmt -s -w "$@"
 
 WWW_SRC_FILES := $(shell find www/weathersource/src -type f -name "*")
 WWW_SRC_FILES += $(shell find www/weathersource/public -type f -name "*")
