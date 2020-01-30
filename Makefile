@@ -20,8 +20,8 @@ artifacts/bin/go-bindata:
 	GOBIN="$(shell pwd)/$(@D)" go install github.com/go-bindata/go-bindata/go-bindata
 
 
-DEPS := $(shell find cmd/weather/deps -type f \! -name "*_gen.go")
-cmd/weather/deps/deps_wire_gen.go: $(DEPS) $(PROTO_FILES:.proto=.pb.go)| artifacts/bin/wire
+DEPS := $(shell find . -path "*/deps/*.go" \! -name "*_gen.go" -type f)
+cmd/weather/deps/deps_wire_gen.go: $(DEPS) $(PROTO_FILES:.proto=.pb.go) | artifacts/bin/wire
 	artifacts/bin/wire gen --output_file_prefix=deps_ "$(shell pwd)/$(@D)"
 
 WWW_SRC_FILES := $(shell find www/weathersource/src -type f -name "*")

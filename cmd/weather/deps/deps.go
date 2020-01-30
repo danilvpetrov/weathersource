@@ -4,6 +4,7 @@
 package deps
 
 import (
+	commondeps "github.com/danilvpetrov/weathersource/internal/deps"
 	"github.com/danilvpetrov/weathersource/internal/run"
 	"github.com/danilvpetrov/weathersource/storage"
 	"github.com/danilvpetrov/weathersource/storage/mysqlstorage"
@@ -13,9 +14,8 @@ import (
 func Deps() ([]run.Service, func(), error) {
 	panic(
 		wire.Build(
-			ProvideLogger,
+			commondeps.CommonDepsSet,
 			ProvideClient,
-			ProvideDatabase,
 			ProvideStorage,
 			wire.Bind(new(storage.Persister), new(*mysqlstorage.Storage)),
 			wire.Bind(new(storage.DataAccessor), new(*mysqlstorage.Storage)),
