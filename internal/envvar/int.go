@@ -8,7 +8,7 @@ import (
 // Int64Default returns the int64 value of the environment variable named n,
 // or the default value d if the variable is empty or undefined.
 func Int64Default(n string, d int64) (int64, error) {
-	v := StringDefault(n, string(d))
+	v := StringDefault(n, strconv.FormatInt(d, 10))
 
 	i64, err := strconv.ParseInt(v, 10, 64)
 	if err != nil {
@@ -62,8 +62,8 @@ func Int64(n string) (int64, error) {
 
 // Uint64Default returns the uint64 value of the environment variable named n,
 // or the default value d if the variable is empty or undefined.
-func Uint64Default(n string, d int64) (uint64, error) {
-	v := StringDefault(n, string(n))
+func Uint64Default(n string, d uint64) (uint64, error) {
+	v := StringDefault(n, strconv.FormatUint(d, 10))
 
 	ui64, err := strconv.ParseUint(v, 10, 64)
 	if err != nil {

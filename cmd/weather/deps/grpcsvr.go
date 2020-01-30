@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"strconv"
 
 	"github.com/danilvpetrov/weathersource/api/apigrpc"
 	"github.com/danilvpetrov/weathersource/api/apigrpc/services"
@@ -18,18 +17,12 @@ func ProvideGRPCServer(
 	dataAccessor storage.DataAccessor,
 	logger *log.Logger,
 ) (*apigrpc.Server, error) {
-	port, err := strconv.ParseInt(
-		envvar.StringDefault(
-			"WEATHER_GRPC_PORT",
-			"8081",
-		), 10, 64,
+	port, err := envvar.Int64Default(
+		"WEATHER_GRPC_PORT",
+		8081,
 	)
 	if err != nil {
-		return nil,
-			fmt.Errorf(
-				"cannot parse WEATHER_GRPC_PORT as an integer: %w",
-				err,
-			)
+		return nil, err
 	}
 
 	fs := services.NewForecastServer(dataAccessor)

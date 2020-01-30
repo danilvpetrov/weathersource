@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"strconv"
 	"time"
 
 	"github.com/danilvpetrov/weathersource/api/apihttp"
@@ -18,18 +17,12 @@ func ProvideHTTPServer(
 	dataAccessor storage.DataAccessor,
 	logger *log.Logger,
 ) (*apihttp.Server, error) {
-	port, err := strconv.ParseInt(
-		envvar.StringDefault(
-			"WEATHER_HTTP_PORT",
-			"8080",
-		), 10, 64,
+	port, err := envvar.Int64Default(
+		"WEATHER_HTTP_PORT",
+		8080,
 	)
 	if err != nil {
-		return nil,
-			fmt.Errorf(
-				"cannot parse WEATHER_HTTP_PORT as an integer: %w",
-				err,
-			)
+		return nil, err
 	}
 
 	return &apihttp.Server{
