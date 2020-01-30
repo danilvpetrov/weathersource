@@ -1,3 +1,5 @@
+![CI](https://github.com/danilvpetrov/weathersource/workflows/CI/badge.svg)
+
 # Weathersource
 
 Weathersource is a weather forecast data collection service. It uses [Dark Sky API](https://darksky.net/dev/docs) to upload the weather forecast data into the
@@ -13,12 +15,12 @@ The service consumes the following environment variables:
   data from [Dark Sky API](https://darksky.net/dev/docs). Must be specified.
 
 - **WEATHER_LOC_LATITUDE** - The latitude of the geographical location of the
-  weather forecast. Must be in the float point format, e.g. `-153.5689`. If not
-  specified, defaults to `0`.
+  weather forecast. Must be in the float point format, e.g. `-153.5689`. Must be
+  specified.
 
 - **WEATHER_LOC_LONGITUDE** - The longitude of the geographical location of the
-  weather forecast. Must be in the floating point format, e.g. `24.84348`.
-  If not specified, defaults to `0`.
+  weather forecast. Must be in the floating point format, e.g. `24.84348`. Must
+  be specified.
 
 - **WEATHER_UPDATE_INTERVAL** - The time interval to download forecast data from
   [Dark Sky API](https://darksky.net/dev/docs). Must be in the format that
