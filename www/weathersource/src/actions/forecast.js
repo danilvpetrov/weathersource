@@ -1,5 +1,3 @@
-import fetch from 'cross-fetch'
-
 export const FETCH_FORECAST = 'FETCH_FORECAST'
 export const FETCH_FORECAST_SUCCEEDED = 'FETCH_FORECAST_SUCCEEDED'
 export const FETCH_FORECAST_FAILED = 'FETCH_FORECAST_FAILED'
