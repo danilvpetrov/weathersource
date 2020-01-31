@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Section, Columns, Loader } from 'react-bulma-components';
+import LoadingBlock from './LoadingBlock';
 
 
 const mapStateToProps = state => {
@@ -14,15 +14,7 @@ class AppLoader extends Component {
 
         if (isLoading) {
             return (
-                <Section>
-                    <Columns centered={true} >
-                        <Columns.Column size={"half"}>
-                            <Loader
-                                style={{ margin: 'auto', width: 200, height: 200, border: '20px solid #209cee', borderTopColor: 'transparent', borderRightColor: 'transparent' }}
-                            />
-                        </Columns.Column>
-                    </Columns>
-                </Section>
+                <LoadingBlock />
             )
         }
 
