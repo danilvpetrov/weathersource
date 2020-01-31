@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Section, Columns, Loader } from 'react-bulma-components';
+import { Section, Columns, Loader, Heading } from 'react-bulma-components';
 
 class LoadingBlock extends Component {
     render() {
+        const { text } = this.props
         return (
             <Section>
                 <Columns centered={true} >
@@ -17,6 +18,11 @@ class LoadingBlock extends Component {
                                 borderRightColor: 'transparent'
                             }}
                         />
+                        <Section>
+                            <Heading subtitle size={4} renderAs="h6" textAlignment="centered">
+                                {text}
+                            </Heading>
+                        </Section>
                     </Columns.Column>
                 </Columns>
             </Section>
