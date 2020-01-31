@@ -14,7 +14,7 @@ class AppLoader extends Component {
 
         if (isLoading) {
             return (
-                <LoadingBlock />
+                <LoadingBlock text="Loading forecast data..." />
             )
         }
 

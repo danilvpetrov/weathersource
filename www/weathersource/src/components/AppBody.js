@@ -21,7 +21,7 @@ class AppBody extends Component {
 
         if (isLoaded) {
             return (
-                <Suspense fallback={LoadingBlock}>
+                <Suspense fallback={<LoadingBlock text="Loading component ..." />}>
                     <Switch>
                         <Route path="/hourly">
                             <Hourly />
