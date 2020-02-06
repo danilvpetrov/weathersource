@@ -13,5 +13,5 @@ require (
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
 	golang.org/x/sys v0.0.0-20191112214154-59a1497f0cea // indirect
 	golang.org/x/text v0.3.2 // indirect
-	google.golang.org/grpc v1.27.0
+	google.golang.org/grpc v1.27.1
 )
