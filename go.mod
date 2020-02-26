@@ -5,7 +5,7 @@ go 1.13
 require (
 	github.com/cenkalti/backoff/v4 v4.0.0
 	github.com/go-sql-driver/mysql v1.5.0
-	github.com/golang/protobuf v1.3.3
+	github.com/golang/protobuf v1.3.4
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/google/wire v0.4.0
 	github.com/mattetti/filebuffer v1.0.0
