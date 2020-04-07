@@ -3,7 +3,7 @@ module github.com/danilvpetrov/weathersource
 go 1.13
 
 require (
-	github.com/cenkalti/backoff/v4 v4.0.0
+	github.com/cenkalti/backoff/v4 v4.0.2
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/golang/protobuf v1.3.3
 	github.com/google/go-cmp v0.3.1 // indirect
