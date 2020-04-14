@@ -13,4 +13,5 @@ require (
 	golang.org/x/sys v0.0.0-20191112214154-59a1497f0cea // indirect
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/grpc v1.28.1
+	google.golang.org/protobuf v1.21.0
 )
