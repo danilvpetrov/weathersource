@@ -452,7 +452,9 @@ func init() {
 	proto.RegisterType((*Data)(nil), "weathersource.data.Data")
 }
 
-func init() { proto.RegisterFile("data/data.proto", fileDescriptor_48e8d492558f417f) }
+func init() {
+	proto.RegisterFile("data/data.proto", fileDescriptor_48e8d492558f417f)
+}
 
 var fileDescriptor_48e8d492558f417f = []byte{
 	// 842 bytes of a gzipped FileDescriptorProto

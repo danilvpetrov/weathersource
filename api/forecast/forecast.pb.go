@@ -89,7 +89,9 @@ func init() {
 	proto.RegisterType((*Forecast)(nil), "weathersource.api.forecast.Forecast")
 }
 
-func init() { proto.RegisterFile("api/forecast/forecast.proto", fileDescriptor_03d31b6fcc6cd6d4) }
+func init() {
+	proto.RegisterFile("api/forecast/forecast.proto", fileDescriptor_03d31b6fcc6cd6d4)
+}
 
 var fileDescriptor_03d31b6fcc6cd6d4 = []byte{
 	// 207 bytes of a gzipped FileDescriptorProto
