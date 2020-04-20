@@ -36,20 +36,18 @@ func (c *Collector) Run(ctx context.Context) error {
 }
 
 func (c *Collector) do(ctx context.Context) error {
-	var (
-		res *Response
-		err error
-	)
+	var res *Response
 
 	return backoff.RetryNotify(
 		func() error {
 			// Don't make a call if the response is already available from
 			// previous retry call.
 			if res == nil {
-				res, err = c.Client.Forecast(ctx)
+				r, err := c.Client.Forecast(ctx)
 				if err != nil {
 					return err
 				}
+				res = r
 			}
 
 			if err := c.Persister.Save(ctx, res.ToData()); err != nil {
